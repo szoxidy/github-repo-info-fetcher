@@ -22,8 +22,10 @@ app.post('/getrepos', async function (req, res) {
 		'Content-Type': 'application/json',
 		'Access-Control-Allow-Origin': '*',
 	});
+
 	const bodyJson = req.body;
-	const repos = bodyJson?.repos ?? [];
+	let repos = bodyJson?.repos ?? [];
+	repos = repos.filter(repo => repo.match(/^[a-z0-9\-]+\/[a-z0-9\-]+$/i));
 
 	console.log(repos);
 
@@ -31,6 +33,7 @@ app.post('/getrepos', async function (req, res) {
 		res.send("{}");
 		return;
 	}
+
 
 	const result = {};
 
