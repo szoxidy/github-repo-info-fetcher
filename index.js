@@ -71,7 +71,7 @@ app.post('/getrepos', async function (req, res) {
 				releases {
 					totalCount
 				}
-				languages(first: 100) {
+				languages(first: 100, orderBy: {field: SIZE, direction: DESC}) {
 					nodes {
 						color
 						name
